@@ -1,13 +1,19 @@
-package com.example.gps_kotlin.Login
 
+package com.example.gps_kotlin.Login
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
 import com.example.gps_kotlin.MainActivity
 import com.example.gps_kotlin.databinding.ActivityLoginPageBinding
-import com.google.gson.Gson
+import com.example.gps_kotlin.Login.LoginResponse
+import com.example.gps_kotlin.Login.User
+import com.example.gps_kotlin.Login.RetrofitClient
+import com.example.gps_kotlin.R
+import com.example.gps_kotlin.UserViewModel
+import com.example.gps_kotlin.profile.ProfileFragment
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -15,41 +21,42 @@ import retrofit2.Response
 class LoginPage : AppCompatActivity() {
     private lateinit var binding: ActivityLoginPageBinding
     private val apiService = RetrofitClient.apiService
+    private lateinit var viewModel: UserViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        viewModel = ViewModelProvider(this).get(UserViewModel::class.java)
 
         binding.loginButton.setOnClickListener {
-            val vname = binding.editTextName.text.toString()
-            val vpassword = binding.editTextVehicleNumber.text.toString()
-            val user = User(vname, vpassword)
+            val username = binding.editTextName.text.toString()
+            val vehicleNumber = binding.editTextVehicleNumber.text.toString()
+            val user = User(username, vehicleNumber)
+            Log.d("LoginPage", "Username: $username, Vehicle Number: $vehicleNumber")
 
-
-
-            // Convert the User object to JSON string for logging
-            val gson = Gson()
-            val userJson = gson.toJson(user)
-
-            // Log the JSON string
-            Log.d("UserData", "User JSON: $userJson")
-
+            //         Send login request to the server
             apiService.loginUser(user).enqueue(object : Callback<LoginResponse> {
                 override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                     val statusCode = response.code()
                     when (statusCode) {
                         200 -> {
                             // HTTP 200 OK - Login successful
-                                startActivity(Intent(this@LoginPage, MainActivity::class.java))
-                                finish()
+                            // Start MainActivity
+                            Log.d("LoginPage", "Login successful")
+                            viewModel.saveUserDetails(this@LoginPage, username, vehicleNumber)
+                            viewModel.userName.value = username
+                            viewModel.userVehicleNumber.value = vehicleNumber
+
+                            val userDetailsIntent = Intent(this@LoginPage, MainActivity::class.java)
+                            startActivity(userDetailsIntent)
+                            finish()
 
                         }
                         401 -> {
                             // HTTP 401 Unauthorized - Unauthorized access, handle accordingly
                             Toast.makeText(this@LoginPage, "Unauthorized access. Please check your credentials.", Toast.LENGTH_SHORT).show()
                         }
-                        // Add more cases as needed for other response codes
                         else -> {
                             // Other HTTP status codes - Handle accordingly
                             Toast.makeText(this@LoginPage, "Unexpected error. Please try again later.", Toast.LENGTH_SHORT).show()
@@ -62,7 +69,6 @@ class LoginPage : AppCompatActivity() {
                     Toast.makeText(this@LoginPage, "Network error. Please try again.", Toast.LENGTH_SHORT).show()
                 }
             })
-
         }
     }
 }

@@ -11,9 +11,9 @@ class MyDataAdapter(private var dataList: List<MyData>) :
     RecyclerView.Adapter<MyDataAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val textViewEntry: TextView = itemView.findViewById(R.id.entry_time)
-        val textViewExit: TextView = itemView.findViewById(R.id.exit_time)
-        val textViewCost: TextView = itemView.findViewById(R.id.cost)
+        val textViewMoneyDeducted: TextView = itemView.findViewById(R.id.MoneyDeducted)
+        val textViewTime: TextView = itemView.findViewById(R.id.HistoryTime)
+        val textViewDate: TextView = itemView.findViewById(R.id.HistoryDate)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -24,9 +24,9 @@ class MyDataAdapter(private var dataList: List<MyData>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = dataList[position]
-        holder.textViewCost.text = item.cost
-        holder.textViewEntry.text = item.entry_time.toString()
-        holder.textViewExit.text = item.exit_time.toString()
+        holder.textViewMoneyDeducted.text = item.moneyDeducted
+        holder.textViewTime.text = item.time
+        holder.textViewDate.text = item.date
     }
 
     override fun getItemCount(): Int {

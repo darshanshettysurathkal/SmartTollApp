@@ -8,161 +8,46 @@
     android:background="@drawable/untitled_design22"
     tools:context=".home.Home_Page">
 
-    <!-- Entry Time CardView -->
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="418dp"
-        android:layout_height="261dp"
-        android:layout_marginBottom="16dp"
-        android:foreground="?android:attr/selectableItemBackground"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="4dp"
-        app:cardUseCompatPadding="true"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/moneyCardView"
+        android:layout_width="350dp"
+        android:layout_height="400dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp">
 
-        <!-- ImageView inside CardView with rounded corners -->
-        <ImageView
-            android:id="@+id/imageView"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            app:srcCompat="@drawable/lance_asper_n9pf2j656aq_unsplash" />
-    </androidx.cardview.widget.CardView>
+            android:gravity="center"
+            android:orientation="vertical">
 
-    <!-- Entry Time Info CardView -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:foreground="?android:attr/selectableItemBackground"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="4dp"
-        app:cardUseCompatPadding="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cardView"
-        app:layout_constraintVertical_bias="0.092">
-
-        <!-- Linear layout for horizontal arrangement -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="16dp">
-
-            <!-- Entry time label on the left -->
-            <TextView
-                android:id="@+id/entryTimeLabel"
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="24sp"
-                android:text="Entry time:"
-                android:textStyle="bold" />
+                android:src="@drawable/yik66g9nt"
+                />
 
-            <!-- Entry time value on the right -->
             <TextView
-                android:id="@+id/entryTimeValue"
-                android:layout_width="0dp"
-                android:textAlignment="center"
-                android:textSize="24sp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                tools:text="12:30 PM"
-                android:textColor="#555" />
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-    <!-- Exit Time Info CardView -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardViewExitTime"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:foreground="?android:attr/selectableItemBackground"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="4dp"
-        app:cardUseCompatPadding="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cardView2"
-        app:layout_constraintVertical_bias="0.092">
-
-        <!-- Linear layout for horizontal arrangement -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="16dp">
-
-            <!-- Exit time label on the left -->
-            <TextView
-                android:id="@+id/exitTimeLabel"
+                android:id="@+id/balaceTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="24sp"
-                android:text="Exit time:  "
-                android:textStyle="bold" />
+                android:text="Balance:"
+                android:textSize="25sp"
+                android:textColor="#32cd32"/>
 
-            <!-- Exit time value on the right -->
             <TextView
-                android:id="@+id/exitTimeValue"
-                android:layout_width="0dp"
-                android:textSize="24sp"
-                android:textAlignment="center"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                tools:text="05:00 PM"
-                android:textColor="#555" />
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-    <!-- Cost Info CardView -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardViewCost"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:foreground="?android:attr/selectableItemBackground"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="4dp"
-        app:cardUseCompatPadding="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cardViewExitTime"
-        app:layout_constraintVertical_bias="0.092">
-
-        <!-- Linear layout for horizontal arrangement -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="16dp">
-
-            <!-- Cost label on the left -->
-            <TextView
-                android:id="@+id/costLabel"
+                android:id="@+id/moneyamount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="24sp"
-                android:text="Cost:     "
-                android:textStyle="bold" />
-
-            <!-- Cost value on the right -->
-            <TextView
-                android:id="@+id/costValue"
-                android:textAlignment="center"
-                android:layout_width="0dp"
-                android:textSize="24sp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                tools:text="$20.00"
-                android:textColor="#555" />
+                android:text="$1000"
+            android:textColor="#32cd32 "
+            android:textSize="25sp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

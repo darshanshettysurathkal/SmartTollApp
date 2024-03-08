@@ -1,7 +1,7 @@
 package com.example.gps_kotlin.history
 
 data class MyData(
-    val cost : String = " ",
-    val entry_time : String= " ",
-    val exit_time : String= " "
+    val moneyDeducted: String = "", // Field for money deducted
+    val time: String = "", // Field for time
+    val date: String = "" // Field for date
 )

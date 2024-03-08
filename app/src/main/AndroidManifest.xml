@@ -4,6 +4,9 @@
 
     <!-- Internet permission -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+
+
 
     <!-- Access network state permission -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />

@@ -1,46 +1,40 @@
-
-<LinearLayout android:layout_width="match_parent"
+<LinearLayout
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constarint_container"
-            android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/MoneyDeducted"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="-50.00"
+        android:textSize="25sp"
+        android:textColor="@android:color/red"
+        android:textStyle="bold"
+        android:layout_gravity="center_vertical" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/HistoryTime"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="12dp">
+            android:text="12:00 PM"
+            android:textSize="25sp"
+            android:layout_gravity="end" />
 
-            <TextView
-                android:id="@+id/cost"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif"
-                android:text="COST"
-                android:textColor="?attr/colorPrimary"
-                android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/constarint_container" />
-
-            <TextView
-                android:id="@+id/entry_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#3c6e71"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/constarint_container"
-                tools:text="ENTRY TIME" />
-
-            <TextView
-                android:id="@+id/exit_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="@id/constarint_container"
-                app:layout_constraintTop_toBottomOf="@id/entry_time"
-                tools:text="EXIT TIME" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/HistoryDate"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:text="Jan 01, 2024"
+            android:layout_gravity="end" />
+    </LinearLayout>
 </LinearLayout>

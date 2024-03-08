@@ -8,6 +8,7 @@ import androidx.fragment.app.commit
 import com.example.gps_kotlin.databinding.ActivityMainBinding
 import com.example.gps_kotlin.history.HistoryFragment
 import com.example.gps_kotlin.home.Home_Page
+import com.example.gps_kotlin.profile.ProfileFragment
 import com.google.android.material.navigation.NavigationBarView
 
 class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListener {
@@ -40,11 +41,11 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
     }
 
     // If you need a profile fragment
-    /*
+
     private fun profileclicked() {
-        navigateToFragment(RunningFragment())
+        navigateToFragment(ProfileFragment())
     }
-    */
+
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
@@ -57,11 +58,11 @@ class MainActivity : AppCompatActivity(), NavigationBarView.OnItemSelectedListen
                 return true
             }
 
-            // Uncomment and implement if you need a profile fragment
-            // R.id.bottomnav_person_id -> {
-            //     profileclicked()
-            //     return true
-            // }
+             //Uncomment and implement if you need a profile fragment
+             R.id.bottomnav_person_id -> {
+                 profileclicked()
+                 return true
+             }
             else -> return false
         }
 
