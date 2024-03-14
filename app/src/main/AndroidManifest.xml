@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
     <!-- Internet permission -->
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
-
-
-
-    <!-- Access network state permission -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" /> <!-- Access network state permission -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
@@ -21,29 +16,32 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Gps_kotlin"
         tools:targetApi="31">
-
+        <activity
+            android:name=".Registration.vehicle_details.VehicleDetails"
+            android:exported="false" />
+        <activity
+            android:name=".Registration.OTP"
+            android:exported="false" />
+        <activity
+            android:name=".Registration.RegistrationPage"
+            android:exported="false" />
         <activity
             android:name=".Login.LoginPage"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".home.Home_Page"
             android:exported="false"
             android:label="@string/title_activity_home_page"
-            android:theme="@style/Theme.Gps_kotlin" />
-
-        <!-- Remove the MainActivity activity from the launcher -->
-
+            android:theme="@style/Theme.Gps_kotlin" /> <!-- Remove the MainActivity activity from the launcher -->
         <activity
             android:name=".MainActivity"
-            android:exported="false">
-        </activity>
-
+            android:exported="false" />
     </application>
 
 </manifest>

@@ -36,7 +36,7 @@ class HistoryFragment : Fragment() {
         binding.RecycleID.adapter = adapter
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("http://your_backend_base_url/") // mool ninna base url padre, excluding apaga MyAPi padhdina endpoint
+            .baseUrl("https://smart-toll.onrender.com/") // mool ninna base url padre, excluding apaga MyAPi padhdina endpoint
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 

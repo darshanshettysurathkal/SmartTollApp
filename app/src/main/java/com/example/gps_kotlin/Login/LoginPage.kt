@@ -12,6 +12,7 @@ import com.example.gps_kotlin.Login.LoginResponse
 import com.example.gps_kotlin.Login.User
 import com.example.gps_kotlin.Login.RetrofitClient
 import com.example.gps_kotlin.R
+import com.example.gps_kotlin.Registration.RegistrationPage
 import com.example.gps_kotlin.UserViewModel
 import com.example.gps_kotlin.profile.ProfileFragment
 import retrofit2.Call
@@ -35,14 +36,12 @@ class LoginPage : AppCompatActivity() {
             val user = User(username, vehicleNumber)
             Log.d("LoginPage", "Username: $username, Vehicle Number: $vehicleNumber")
 
-            //         Send login request to the server
             apiService.loginUser(user).enqueue(object : Callback<LoginResponse> {
                 override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                     val statusCode = response.code()
                     when (statusCode) {
                         200 -> {
-                            // HTTP 200 OK - Login successful
-                            // Start MainActivity
+
                             Log.d("LoginPage", "Login successful")
                             viewModel.saveUserDetails(this@LoginPage, username, vehicleNumber)
                             viewModel.userName.value = username
@@ -69,6 +68,11 @@ class LoginPage : AppCompatActivity() {
                     Toast.makeText(this@LoginPage, "Network error. Please try again.", Toast.LENGTH_SHORT).show()
                 }
             })
+        }
+
+        binding.RegristrationPage.setOnClickListener {
+            val intent = Intent(this@LoginPage, RegistrationPage::class.java)
+            startActivity(intent)
         }
     }
 }
